@@ -1,0 +1,17 @@
+{
+  "name": "NeilGarb/NG",
+  "homepage": "http://github.com/NeilGarb/NG",
+  "type": "library",
+  "description": "Personal PHP framework",
+  "authors": [
+    {
+      "name": "Neil Garb"
+    }
+  ],
+  "require": {
+    "videlalvaro/php-amqplib": "2.2.*",
+    "nbobtc/bitcoind-php": "~1.2",
+    "mandrill/mandrill": "1.0.*",
+    "arcturial/clickatell": "dev-master"
+  }
+}
