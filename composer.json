@@ -1,6 +1,6 @@
 {
-  "name": "NeilGarb/NG",
-  "homepage": "http://github.com/NeilGarb/NG",
+  "name": "neilgarb/ng",
+  "homepage": "http://github.com/neilgarb/ng",
   "type": "library",
   "description": "Personal PHP framework",
   "authors": [
