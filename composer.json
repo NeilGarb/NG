@@ -8,6 +8,11 @@
       "name": "Neil Garb"
     }
   ],
+  "autoload": {
+    "psr-0": {
+      "NG\\": "src/"
+    }
+  },
   "require": {
     "videlalvaro/php-amqplib": "2.2.*",
     "nbobtc/bitcoind-php": "~1.2",
