@@ -9,7 +9,7 @@ class Multi extends AbstractWriter {
     private $writers = [];
 
     /**
-     * @param AbstractWriter $log
+     * @param AbstractWriter $writer
      * @return Multi
      */
     public function addWriter(AbstractWriter $writer) {
