@@ -1,17 +1,17 @@
 <?php
 
-namespace NG\Http\Client;
+namespace NG\Http;
 
 class Response {
     /**
      * @var int
      */
-    private $status;
+    private $status = 200;
 
     /**
      * @var string
      */
-    private $type;
+    private $type = 'text/html';
 
     /**
      * @var string

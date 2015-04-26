@@ -2,7 +2,7 @@
 
 namespace NG\View;
 
-class Templates {
+class Dir {
     /**
      * @var string
      */

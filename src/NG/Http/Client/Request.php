@@ -2,6 +2,8 @@
 
 namespace NG\Http\Client;
 
+use NG\Http\Response;
+
 class Request {
     /**
      * @var string
