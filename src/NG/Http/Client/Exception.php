@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Http;
+namespace NG\Http\Client;
 
 class Exception extends \Exception {
 
