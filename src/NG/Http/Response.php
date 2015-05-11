@@ -65,4 +65,11 @@ class Response {
     public function getBody() {
         return $this->body;
     }
+
+    public function send() {
+        http_response_code($this->getStatus());
+        header('Content-Type: ' . $this->getType());
+        echo $this->getBody();
+        exit;
+    }
 }
