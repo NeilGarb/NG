@@ -2,7 +2,7 @@
 
 namespace NG\Form;
 
-class Form {
+abstract class AbstractForm {
     /**
      * @var string
      */
@@ -58,7 +58,7 @@ class Form {
 
     /**
      * @param AbstractField $field
-     * @return Form
+     * @return AbstractForm
      * @throws Exception
      */
     public function addField(AbstractField $field) {
@@ -82,7 +82,7 @@ class Form {
 
     /**
      * @param AbstractButton $button
-     * @return Form
+     * @return AbstractForm
      */
     public function addButton(AbstractButton $button) {
         $this->buttons[] = $button;
@@ -98,7 +98,7 @@ class Form {
 
     /**
      * @param array $values
-     * @return Form
+     * @return AbstractForm
      */
     public function setValues(array $values) {
         $this->values = $values;
@@ -123,10 +123,24 @@ class Form {
 
     /**
      * @param array $errors
-     * @return Form
+     * @return AbstractForm
      */
     public function setErrors(array $errors) {
         $this->errors = $errors;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $error
+     * @return AbstractForm
+     */
+    public function setError($name, $error) {
+        if (!$error) {
+            unset($this->errors[$name]);
+        } else {
+            $this->errors[$name] = $error;
+        }
         return $this;
     }
 
@@ -135,6 +149,14 @@ class Form {
      */
     public function getErrors() {
         return $this->errors;
+    }
+
+    /**
+     * @return AbstractForm
+     */
+    public function clearErrors() {
+        $this->errors = [];
+        return $this;
     }
 
     /**
@@ -147,16 +169,11 @@ class Form {
     }
 
     /**
-     * @param string $name
-     * @param string $error
-     * @return Form
+     * @return bool
      */
-    public function setError($name, $error) {
-        if (!$error) {
-            unset($this->errors[$name]);
-        } else {
-            $this->errors[$name] = $error;
-        }
-        return $this;
+    public function hasErrors() {
+        return count($this->errors) > 0;
     }
+
+    abstract public function validate();
 }
