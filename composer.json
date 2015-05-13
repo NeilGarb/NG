@@ -18,5 +18,8 @@
     "nbobtc/bitcoind-php": "~1.2",
     "mandrill/mandrill": "1.0.*",
     "arcturial/clickatell": "2.1.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.6.*"
   }
 }

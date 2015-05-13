@@ -3,7 +3,7 @@
 namespace NG\Validate;
 
 class Email extends AbstractValidator {
-    const REGEX = '/^[^@]+@([^\.]+)(\.[^\.]+)+$/';
+    const REGEX = '/^[^ @]+@([^ \.]+)(\.[^ \.]+)+$/';
 
     /**
      * @param string $value
