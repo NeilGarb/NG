@@ -1,6 +1,8 @@
 <?php
 
-namespace NG\Email;
+namespace NG\Email\Transport;
+
+use NG\Email\Message;
 
 abstract class AbstractTransport {
     /**

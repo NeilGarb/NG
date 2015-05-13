@@ -1,8 +1,8 @@
 <?php
 
-namespace NG\Form;
+namespace NG\Form\Field;
 
-trait PlaceholderTrait {
+trait Placeholder {
     /**
      * @var string
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Sms;
+namespace NG\Sms\Transport;
 
 class Exception extends \Exception {
 

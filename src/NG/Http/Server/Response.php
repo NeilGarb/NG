@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Http;
+namespace NG\Http\Server;
 
 class Response {
     /**

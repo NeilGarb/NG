@@ -1,12 +1,12 @@
 <?php
 
-namespace NG\Http\Server\Session;
+namespace NG\Http\Server\Session\Backend;
 
-use NG\Cache\Memcached;
+use NG\Cache\Memcached as MemcachedCache;
 
-class MemcachedBackend extends AbstractBackend {
+class Memcached extends AbstractBackend {
     /**
-     * @var Memcached
+     * @var MemcachedCache
      */
     private $memcached;
 
@@ -16,9 +16,9 @@ class MemcachedBackend extends AbstractBackend {
     private $data = [];
 
     /**
-     * @param Memcached $memcached
+     * @param MemcachedCache $memcached
      */
-    public function __construct(Memcached $memcached) {
+    public function __construct(MemcachedCache $memcached) {
         $this->memcached = $memcached;
     }
 

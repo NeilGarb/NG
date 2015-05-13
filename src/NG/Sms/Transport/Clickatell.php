@@ -1,8 +1,9 @@
 <?php
 
-namespace NG\Sms;
+namespace NG\Sms\Transport;
 
 use Clickatell\Api\ClickatellHttp;
+use NG\Sms\Message;
 
 class Clickatell extends AbstractTransport {
     /**

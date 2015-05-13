@@ -1,6 +1,8 @@
 <?php
 
-namespace NG\Sms;
+namespace NG\Sms\Transport;
+
+use NG\Sms\Message;
 
 abstract class AbstractTransport {
     /**

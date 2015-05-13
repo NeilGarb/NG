@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Http\Client;
+namespace NG\Email\Transport;
 
 class Exception extends \Exception {
 

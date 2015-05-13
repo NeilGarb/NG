@@ -2,6 +2,9 @@
 
 namespace NG\Form;
 
+use NG\Form\Button\AbstractButton;
+use NG\Form\Field\AbstractField;
+
 abstract class AbstractForm {
     /**
      * @var string

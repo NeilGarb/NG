@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Http\Server\Session;
+namespace NG\Http\Server\Session\Backend;
 
 abstract class AbstractBackend {
     /**

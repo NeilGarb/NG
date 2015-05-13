@@ -1,8 +1,8 @@
 <?php
 
-namespace NG\Form;
+namespace NG\Form\Button;
 
-class LinkButton extends AbstractButton {
+class Link extends AbstractButton {
     /**
      * @var string
      */
@@ -10,7 +10,7 @@ class LinkButton extends AbstractButton {
 
     /**
      * @param string $url
-     * @return LinkButton
+     * @return Link
      */
     public function setUrl($url) {
         $this->url = strval($url);

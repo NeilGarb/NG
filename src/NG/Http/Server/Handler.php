@@ -2,7 +2,6 @@
 
 namespace NG\Http\Server;
 
-use NG\Http\Response;
 use NG\Http\Server\Exception\MethodNotAllowed;
 
 class Handler {

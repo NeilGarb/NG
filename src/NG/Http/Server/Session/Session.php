@@ -2,6 +2,8 @@
 
 namespace NG\Http\Server\Session;
 
+use NG\Http\Server\Session\Backend\AbstractBackend;
+
 class Session implements \SessionHandlerInterface {
     /**
      * @var AbstractBackend

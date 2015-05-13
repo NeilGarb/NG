@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Form;
+namespace NG\Form\Button;
 
 abstract class AbstractButton {
     /**
