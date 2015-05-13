@@ -8,7 +8,13 @@ class Memcached extends AbstractCache {
      */
     private $connection;
 
+    /**
+     * @throws Exception
+     */
     public function __construct() {
+        if (!extension_loaded('memcached')) {
+            throw new Exception('memcached extension isn\'t loaded.');
+        }
         $this->connection = new \Memcached();
     }
 

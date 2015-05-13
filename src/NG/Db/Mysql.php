@@ -31,10 +31,14 @@ class Mysql extends AbstractDb {
      * @param string $sql
      * @param array $args
      * @return MysqlResult
+     * @throws Exception
      */
     public function query($sql, $args = []) {
         $stmt = $this->getPdo()->prepare(strval($sql));
-        $stmt->execute($args);
+        $res = $stmt->execute($args);
+        if (!$res) {
+            throw new Exception('Error executing query.', $sql);
+        }
         return new MysqlResult($stmt);
     }
 
@@ -42,10 +46,14 @@ class Mysql extends AbstractDb {
      * @param string $sql
      * @param $args
      * @return int
+     * @throws Exception
      */
     public function execute($sql, $args = []) {
         $stmt = $this->getPdo()->prepare(strval($sql));
-        $stmt->execute($args);
+        $res = $stmt->execute($args);
+        if (!$res) {
+            throw new Exception('Error executing query.', $sql);
+        }
         return $stmt->rowCount();
     }
 
@@ -53,10 +61,14 @@ class Mysql extends AbstractDb {
      * @param string $sql
      * @param array $args
      * @return int
+     * @throws Exception
      */
     public function insert($sql, $args = []) {
         $stmt = $this->getPdo()->prepare(strval($sql));
-        $stmt->execute($args);
+        $res = $stmt->execute($args);
+        if (!$res) {
+            throw new Exception('Error executing query.', $sql);
+        }
         return self::getPdo()->lastInsertId();
     }
 }
