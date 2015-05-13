@@ -29,6 +29,6 @@ class AbstractBean {
      * @throws Exception
      */
     public function __set($name, $value) {
-        throw new Exception('AbstractBeans are immutable.');
+        throw new Exception('Beans are immutable.');
     }
 }

@@ -4,7 +4,7 @@ namespace NG\Http\Server;
 
 use NG\Http\Server\Exception\MethodNotAllowed;
 
-class Handler {
+abstract class AbstractHandler {
     /**
      * @param Request $request
      * @return Response
