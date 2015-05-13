@@ -106,6 +106,16 @@ abstract class AbstractForm {
     }
 
     /**
+     * @param string $name
+     * @param mixed $value
+     * @return AbstractForm
+     */
+    public function setValue($name, $value) {
+        $this->values[$name] = $value;
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getValues() {
@@ -175,5 +185,8 @@ abstract class AbstractForm {
         return count($this->errors) > 0;
     }
 
+    /**
+     * @return bool
+     */
     abstract public function validate();
 }

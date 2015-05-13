@@ -2,95 +2,159 @@
 
 namespace NG\Http\Server;
 
+use NG\Http\Server\Session\Session;
 use NG\Util;
 
 class Request {
     /**
      * @var array
      */
-    private $get;
+    private $queryVars = [];
 
     /**
      * @var array
      */
-    private $post;
+    private $postVars = [];
 
     /**
      * @var array
      */
-    private $files;
+    private $fileVars = [];
 
     /**
      * @var array
      */
-    private $server;
+    private $serverVars = [];
 
     /**
      * @var array
      */
-    private $env;
+    private $envVars = [];
 
     /**
-     * @param array $get
-     * @param array $post
-     * @param array $files
-     * @param array $server
-     * @param array $env
+     * @var Session
      */
-    public function __construct(
-        array $get,
-        array $post,
-        array $files,
-        array $server,
-        array $env
-    ) {
-        $this->get = $get;
-        $this->post = $post;
-        $this->files = $files;
-        $this->server = $server;
-        $this->env = $env;
+    private $session;
+
+    /**
+     * @param array $queryVars
+     * @return Request
+     */
+    public function setQueryVars(array &$queryVars) {
+        $this->queryVars = $queryVars;
+        return $this;
     }
 
     /**
-     * @param string $var
+     * @param string $name
      * @return mixed
      */
-    public function getPostVar($var) {
-        return array_key_exists($var, $this->post) ? $this->post[$var] : null;
+    public function getQueryVar($name) {
+        return array_key_exists($name, $this->queryVars) ?
+            $this->queryVars[$name] : null;
+    }
+
+    /**
+     * @param array $postVars
+     * @return Request
+     */
+    public function setPostVars(array &$postVars) {
+        $this->postVars = $postVars;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getPostVar($name) {
+        return array_key_exists($name, $this->postVars) ?
+            $this->postVars[$name] : null;
     }
 
     /**
      * @return array
      */
     public function getPostVars() {
-        return $this->post;
+        return $this->postVars;
+    }
+
+    /**
+     * @param array $fileVars
+     * @return Request
+     */
+    public function setFileVars(array &$fileVars) {
+        $this->fileVars = $fileVars;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getFileVar($name) {
+        return array_key_exists($name, $this->fileVars) ?
+            $this->fileVars[$name] : null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFileVars() {
+        return $this->fileVars;
+    }
+
+    /**
+     * @param array $serverVars
+     * @return Request
+     */
+    public function setServerVars(array &$serverVars) {
+        $this->serverVars = $serverVars;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getServerVar($name) {
+        return array_key_exists($name, $this->serverVars) ?
+            $this->serverVars[$name] : null;
+    }
+
+    /**
+     * @param Session $session
+     * @return Request
+     */
+    public function setSession(Session &$session) {
+        $this->session = $session;
+        return $this;
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSession() {
+        return $this->session;
     }
 
     /**
      * @return string
      */
     public function getRequestMethod() {
-        return strval(Util::getKey($this->server, 'REQUEST_METHOD'));
-    }
-
-    /**
-     * @return string
-     */
-    public function getRequestUri() {
-        return strval(Util::getKey($this->server, 'REQUEST_URI'));
+        if (!array_key_exists('REQUEST_METHOD', $this->serverVars)) {
+            return '';
+        }
+        return $this->serverVars['REQUEST_METHOD'];
     }
 
     /**
      * @return string
      */
     public function getRequestPath() {
-        return explode('?', $this->getrequestUri())[0];
-    }
-
-    /**
-     * @return Request
-     */
-    static public function make() {
-        return new self($_GET, $_POST, $_FILES, $_SERVER, $_ENV);
+        if (!array_key_exists('REQUEST_URI', $this->serverVars)) {
+            return '';
+        }
+        return $this->serverVars['REQUEST_URI'];
     }
 }
