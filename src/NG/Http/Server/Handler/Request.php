@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Http\Server;
+namespace NG\Http\Server\Handler;
 
 use NG\Http\Server\Session\Session;
 

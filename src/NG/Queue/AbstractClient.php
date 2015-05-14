@@ -2,7 +2,7 @@
 
 namespace NG\Queue;
 
-abstract class AbstractQueue {
+abstract class AbstractClient {
     /**
      * @param string $queue
      * @param array $data

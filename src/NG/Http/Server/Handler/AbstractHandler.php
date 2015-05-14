@@ -1,8 +1,9 @@
 <?php
 
-namespace NG\Http\Server;
+namespace NG\Http\Server\Handler;
 
 use NG\Http\Server\Exception\MethodNotAllowed;
+use NG\Http\Server\Response\Response;
 
 abstract class AbstractHandler {
     /**

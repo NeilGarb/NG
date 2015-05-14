@@ -6,7 +6,7 @@ use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class Amqp extends AbstractQueue {
+class Amqp extends AbstractClient {
     /**
      * @var AMQPChannel
      */

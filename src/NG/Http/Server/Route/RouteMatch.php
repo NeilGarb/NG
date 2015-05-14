@@ -1,6 +1,9 @@
 <?php
 
-namespace NG\Http\Server;
+namespace NG\Http\Server\Route;
+
+use NG\Http\Server\Handler\Request;
+use NG\Http\Server\Response\Response;
 
 class RouteMatch {
     /**

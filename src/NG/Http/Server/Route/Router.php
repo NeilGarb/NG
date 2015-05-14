@@ -1,8 +1,9 @@
 <?php
 
-namespace NG\Http\Server;
+namespace NG\Http\Server\Route;
 
 use NG\Http\Server\Exception\NotFound;
+use NG\Http\Server\Handler\Request;
 
 class Router {
     /**
