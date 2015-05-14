@@ -28,7 +28,7 @@ class Memcached extends AbstractBackend {
      */
     public function read($id) {
         $key = $this->getKey($id);
-        $data = json_decode($this->memcached->get($key), $assoc = true);
+        $data = unserialize($this->memcached->get($key));
         if ($data) {
             $this->data = $data;
         }
@@ -41,7 +41,7 @@ class Memcached extends AbstractBackend {
      */
     public function write($id) {
         $key = $this->getKey($id);
-        $this->memcached->set($key, json_encode($this->data));
+        $this->memcached->set($key, serialize($this->data));
         return true;
     }
 

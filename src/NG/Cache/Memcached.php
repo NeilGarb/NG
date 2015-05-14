@@ -21,9 +21,11 @@ class Memcached extends AbstractCache {
     /**
      * @param string $host
      * @param int $port
+     * @return Memcached
      */
     public function addServer($host, $port) {
         $this->connection->addServer($host, $port);
+        return $this;
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace NG\Http\Server;
 
-use NG\Http\Response;
-
 class RouteMatch {
     /**
      * @var Request

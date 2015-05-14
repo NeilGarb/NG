@@ -3,7 +3,6 @@
 namespace NG\Http\Server;
 
 use NG\Http\Server\Session\Session;
-use NG\Util;
 
 class Request {
     /**
@@ -25,11 +24,6 @@ class Request {
      * @var array
      */
     private $serverVars = [];
-
-    /**
-     * @var array
-     */
-    private $envVars = [];
 
     /**
      * @var Session

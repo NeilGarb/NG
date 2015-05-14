@@ -9,7 +9,7 @@ class Route {
     protected $path;
 
     /**
-     * @var Handler
+     * @var AbstractHandler
      */
     protected $handler;
 
@@ -22,13 +22,13 @@ class Route {
      * @param $path
      * @param $handler
      */
-    public function __construct($path, Handler $handler) {
+    public function __construct($path, AbstractHandler $handler) {
         $this->path = $path;
         $this->handler = $handler;
     }
 
     /**
-     * @return Handler
+     * @return AbstractHandler
      */
     public function getHandler() {
         return $this->handler;

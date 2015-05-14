@@ -1,30 +1,36 @@
 <?php
 
-namespace NG\Http\Server;
+namespace NG\Http\Server\Response;
 
 class Response {
     /**
      * @var int
      */
-    private $status = 200;
+    protected $status;
 
     /**
      * @var string
      */
-    private $type = 'text/html';
+    protected $type;
 
     /**
      * @var string
      */
-    private $body = '';
+    protected $body;
 
     /**
      * @param int $status
-     * @return Response
+     * @param string $type
+     * @param string $body
      */
-    public function setStatus($status) {
-        $this->status = intval($status);
-        return $this;
+    public function __construct(
+        $status = 200,
+        $type = 'text/html',
+        $body = ''
+    ) {
+        $this->status = $status;
+        $this->type = $type;
+        $this->body = $body;
     }
 
     /**
@@ -35,28 +41,10 @@ class Response {
     }
 
     /**
-     * @param string $type
-     * @return Response
-     */
-    public function setType($type) {
-        $this->type = strval($type);
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getType() {
         return $this->type;
-    }
-
-    /**
-     * @param string $body
-     * @return Response
-     */
-    public function setBody($body) {
-        $this->body = strval($body);
-        return $this;
     }
 
     /**

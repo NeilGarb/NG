@@ -3,6 +3,11 @@
 namespace NG\View;
 
 class Template {
+    /**
+     * @var array
+     */
+    static private $vars = [];
+
     private $file;
 
     public function __construct($file) {
@@ -10,6 +15,7 @@ class Template {
     }
 
     public function render(array $data = []) {
+        extract(self::$vars);
         extract($data);
         ob_start();
         include $this->file;
@@ -29,5 +35,13 @@ class Template {
      */
     private function e($str) {
         return htmlspecialchars($str, ENT_QUOTES, 'utf-8');
+    }
+
+    /**
+     * @param string $var
+     * @param mixed $value
+     */
+    static public function set($var, $value) {
+        self::$vars[$var] = $value;
     }
 }
