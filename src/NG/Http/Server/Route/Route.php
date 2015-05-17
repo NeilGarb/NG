@@ -26,7 +26,7 @@ class Route {
      * @param $handler
      */
     public function __construct($path, AbstractHandler $handler) {
-        $this->path = $path;
+        $this->path = rtrim($path, '/');
         $this->handler = $handler;
     }
 
@@ -44,7 +44,7 @@ class Route {
     public function match(Request $request) {
         $matches = [];
         $res = preg_match(
-            '#^' . $this->path . '$#',
+            '#^' . $this->path . '/?$#',
             $request->getRequestPath(),
             $matches
         );

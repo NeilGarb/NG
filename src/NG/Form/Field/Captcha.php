@@ -9,12 +9,18 @@ class Captcha extends AbstractField {
     private $key;
 
     /**
+     * @var string
+     */
+    private $secret;
+
+    /**
      * @param string $name
      * @param string $key
      */
-    public function __construct($name, $key) {
+    public function __construct($name, $key, $secret) {
         parent::__construct($name);
         $this->key = $key;
+        $this->secret = $secret;
     }
 
     /**
@@ -25,13 +31,12 @@ class Captcha extends AbstractField {
     }
 
     /**
-     * @param string $secret
      * @param string $response
      * @return bool
      */
-    static public function validate($secret, $response) {
+    public function validate($response) {
         $data = [
-            'secret' => $secret,
+            'secret' => $this->secret,
             'response' => $response,
         ];
         $streamContext = stream_context_create([
@@ -43,6 +48,9 @@ class Captcha extends AbstractField {
         ]);
         $res = file_get_contents('https://www.google.com/recaptcha/api/siteverify', null, $streamContext);
         $json = json_decode($res);
-        return $json->success;
+        if (!$json || !isset($json->success)) {
+            return false;
+        }
+        return boolval($json->success);
     }
 }

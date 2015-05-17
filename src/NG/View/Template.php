@@ -11,6 +11,9 @@ class Template {
     private $file;
 
     public function __construct($file) {
+        if (!file_exists($file)) {
+            throw new Exception(sprintf('Template %s doesn\'t exist.', $file));
+        }
         $this->file = $file;
     }
 

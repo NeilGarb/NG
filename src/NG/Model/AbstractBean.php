@@ -31,4 +31,11 @@ class AbstractBean {
     public function __set($name, $value) {
         throw new Exception('Beans are immutable.');
     }
+
+    /**
+     * @return array
+     */
+    public function getData() {
+        return (array) $this->data;
+    }
 }

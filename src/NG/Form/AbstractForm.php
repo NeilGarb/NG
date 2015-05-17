@@ -4,6 +4,8 @@ namespace NG\Form;
 
 use NG\Form\Button\AbstractButton;
 use NG\Form\Field\AbstractField;
+use NG\Http\Server\Exception\BadRequest;
+use NG\Util;
 
 abstract class AbstractForm {
     /**
@@ -84,6 +86,14 @@ abstract class AbstractForm {
     }
 
     /**
+     * @param string $name
+     * @return AbstractField
+     */
+    public function getField($name) {
+        return Util::getKey($this->fields, $name);
+    }
+
+    /**
      * @param AbstractButton $button
      * @return AbstractForm
      */
@@ -130,8 +140,7 @@ abstract class AbstractForm {
      * @return mixed
      */
     public function getValue($name) {
-        return array_key_exists($name, $this->values) ?
-            $this->values[$name] : null;
+        return Util::getKey($this->values, $name);
     }
 
     /**
@@ -177,8 +186,7 @@ abstract class AbstractForm {
      * @return string
      */
     public function getError($name) {
-        return array_key_exists($name, $this->errors) ?
-            $this->errors[$name] : '';
+        return Util::getKey($this->errors, $name, $default = '');
     }
 
     /**
@@ -189,7 +197,26 @@ abstract class AbstractForm {
     }
 
     /**
-     * @return bool
+     * @param string $name
+     * @return mixed
      */
-    abstract public function validate();
+    public function __get($name) {
+        return $this->getValue($name);
+    }
+
+    /**
+     * @param array $errors
+     */
+    abstract protected function _validate(array &$errors);
+
+    /**
+     * @throws BadRequest
+     */
+    public function validate() {
+        $errors = [];
+        $this->_validate($errors);
+        if ($errors) {
+            throw new BadRequest($errors);
+        }
+    }
 }
